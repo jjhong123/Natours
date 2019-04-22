@@ -1,0 +1,19 @@
+{
+    "name": "Natours",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "compile:sass": "node-sass sass/main.scss css/style.css --watch",
+        "server": "live-server ./ --port=9090"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "jquery": "^3.4.0"
+    },
+    "devDependencies": {
+        "node-sass": "^4.11.0"
+    }
+}
