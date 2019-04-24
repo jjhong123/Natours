@@ -1,3 +1,9 @@
+// link：表示鏈接在正常情況下（即頁面剛加載完成時）顯示的顏色。
+// visited：表示鏈接被點擊後顯示的顏色。
+// hover：表示鼠標懸停時顯示的顏色。
+// focus：表示元素獲得光標焦點時使用的顏色，主要用於文本框輸入文字時使用（鼠標鬆開時顯示的顏色）。
+// active：表示當所指元素處於觸發狀態（鼠標在元素上按下還沒有鬆開）時所顯示的顏色
+
 .btn {
     &,
     &:link,
@@ -67,5 +73,30 @@
     &--animated {
         animation: moveInBottom 0.5s ease-out 0.75s;
         animation-fill-mode: backwards;
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all 0.2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+        transform: translateY(0);
     }
 }
