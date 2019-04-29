@@ -30,13 +30,13 @@
     }
 
     &__nav {
-        height: 100vh;
+        height: 0;
         position: fixed;
         top: 0;
         left: 0;
         z-index: 1500;
-
-        transition: all .8s;
+        display: none;
+        transition: height .8s;
         width: 0;
         opacity: 0;
     }
@@ -85,12 +85,67 @@
         }
     }
 
+    //功能
     &__checkbox:checked ~ &__background{
+        opacity: 0.9;
         transform: scale(80);
     }
 
     &__checkbox:checked ~ &__nav{
+        display: unset;
         opacity: 1;
-        width:100%;
+        width: 100%;
+        height:100vh;
+    }
+
+    //icon
+    &__icon{
+        position: relative;
+        margin-top: 3.5rem;
+
+        &,
+        &::before,
+        &::after{
+            width: 3rem;
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after{
+            content:"";
+            position: absolute;
+            left: 0;
+            transition: all .8s;
+        }
+
+        &::before{top:-.8rem;}
+        &::after{top:.8rem;}
+    }
+
+    &__button:hover &__icon::before{
+        top:-1rem;
+    }
+
+    &__button:hover &__icon::after{
+        top:1rem;
+    }
+
+    //功能
+    &__checkbox:checked + &__button &__icon{
+        background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__icon::before{
+        top: 0;
+        // transform: rotate(45deg); 比較沒變化
+        transform: rotate(135deg);
+    }
+
+    &__checkbox:checked + &__button &__icon::after{
+        top:0;
+        // transform: rotate(-45deg);
+        transform: rotate(-135deg);
     }
 }
