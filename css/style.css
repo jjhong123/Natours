@@ -546,7 +546,8 @@ body {
 .footer {
   background-color: #333;
   padding: 10rem 0;
-  font-size: 1.4rem; }
+  font-size: 1.4rem;
+  color: #f7f7f7; }
   .footer__logo-box {
     text-align: center;
     margin-bottom: 8rem; }
@@ -576,7 +577,8 @@ body {
   .footer__copyright {
     border-top: 1px solid #777;
     padding-top: 2rem;
-    width: 80%; }
+    width: 80%;
+    float: right; }
 
 .section-about {
   background-color: #f7f7f7;
