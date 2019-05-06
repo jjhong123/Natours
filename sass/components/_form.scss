@@ -9,24 +9,28 @@
         color: inherit;
         padding: 1.5rem 2rem;
         border-radius: 2px;
-        background-color: rbga($color-white, 0.5);
+        background-color: rgba($color: $color-white, $alpha: 0.5);
         border: none;
         border-bottom: 3px solid transparent;
         width: 90%;
         display: block;
-        transition: all 0.3s;
-
+        transition: 0.3s;
+        @include respond(tab-port) {
+            width: 100%;
+        }
         &:focus {
             outline: none;
-            box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+            box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.1);
             border-bottom: 3px solid $color-primary;
         }
 
         &:focus:invalid {
+            //當fouce input 如果無效時 產生下底線為橘色
             border-bottom: 3px solid $color-secondary-dark;
         }
 
         &::-webkit-input-placeholder {
+            //placeholder 字體的顏色
             color: $color-grey-dark-2;
         }
     }
@@ -41,14 +45,24 @@
     }
 
     &__input:placeholder-shown + &__label {
-        opacity: 0;
-        visibility: hidden;
+        // 需要先input 才能執行label  所以寫在前面
+        // ＋ ->是指相鄰的兩個同級的class ~ -> 是指同級但不相鄰的兩個class
+        //當placeholder-shown 代表目前沒有輸入,所以我們希望能夠先隱藏起來
+        opacity: 0; //只有opacity ->元素還在頁面上 只是沒顯示
+        visibility: hidden; //->元素整個消失
         transform: translateY(-4rem);
+
+        //這邊為full name一開始的狀態 ,當有輸入文字時 才會transition-> label
     }
 
     &__radio-group {
         width: 49%;
         display: inline-block;
+
+        @include respond(tab-port) {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
     }
 
     &__radio-input {
@@ -63,32 +77,33 @@
     }
 
     &__radio-button {
-        height: 3rem;
         width: 3rem;
-        border: 5px solid $color-primary;
+        height: 3rem;
         border-radius: 50%;
+        border: 5px solid $color-primary;
         display: inline-block;
         position: absolute;
-        left: 0;
         top: -0.4rem;
+        left: 0;
 
         &::after {
             content: '';
-            display: block;
-            height: 1.3rem;
             width: 1.3rem;
-            border-radius: 50%;
+            height: 1.3rem;
+            background-color: $color-primary;
             position: absolute;
             top: 50%;
             left: 50%;
+            border-radius: 50%;
             transform: translate(-50%, -50%);
-            background-color: $color-primary;
             opacity: 0;
-            transition: opacity 0.2s;
+            transition: opacity 0.1s;
         }
     }
 
     &__radio-input:checked ~ &__radio-label &__radio-button::after {
         opacity: 1;
+
+        //通過點擊 選擇到了label /-> button::after
     }
 }

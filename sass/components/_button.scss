@@ -1,42 +1,37 @@
-// link：表示鏈接在正常情況下（即頁面剛加載完成時）顯示的顏色。
-// visited：表示鏈接被點擊後顯示的顏色。
-// hover：表示鼠標懸停時顯示的顏色。
-// focus：表示元素獲得光標焦點時使用的顏色，主要用於文本框輸入文字時使用（鼠標鬆開時顯示的顏色）。
-// active：表示當所指元素處於觸發狀態（鼠標在元素上按下還沒有鬆開）時所顯示的顏色
-
 .btn {
     &,
-    &:link,
-    &:visited {
+    &:link, //沒有被按過 ->a的屬性
+    &:visited //被拜訪過 ->a的屬性
+    // 因為button 沒有上述兩個屬性 所以才需要＆  
+     {
         text-transform: uppercase;
         text-decoration: none;
         padding: 1.5rem 4rem;
         display: inline-block;
         border-radius: 10rem;
-        transition: all 0.2s;
+        transition: all 0s;
         position: relative;
         font-size: $default-font-size;
-
-        //Change for the <button> element
         border: none;
         cursor: pointer;
     }
 
     &:hover {
         transform: translateY(-3px);
-        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
 
         &::after {
             transform: scaleX(1.4) scaleY(1.6);
             opacity: 0;
+
         }
     }
 
-    &:active,
-    &:focus {
+    &:active,&:focus {
         outline: none;
         transform: translateY(-1px);
-        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+
     }
 
     &--white {
@@ -58,25 +53,27 @@
     }
 
     &::after {
-        content: '';
-        display: inline-block;
-        height: 100%;
+        content: "";
         width: 100%;
+        height: 100%;
         border-radius: 10rem;
         position: absolute;
         top: 0;
         left: 0;
         z-index: -1;
-        transition: all 0.4s;
+        display: inline-block;
+        transition: all .4s;
     }
 
+
     &--animated {
-        animation: moveInBottom 0.5s ease-out 0.75s;
+        animation: moveInBottom .5s ease-out .75s;
         animation-fill-mode: backwards;
     }
 }
 
 .btn-text {
+
     &:link,
     &:visited {
         font-size: $default-font-size;
@@ -85,7 +82,7 @@
         text-decoration: none;
         border-bottom: 1px solid $color-primary;
         padding: 3px;
-        transition: all 0.2s;
+        transition: all .2s;
     }
 
     &:hover {
@@ -96,7 +93,7 @@
     }
 
     &:active {
-        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
         transform: translateY(0);
     }
 }

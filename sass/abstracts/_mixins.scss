@@ -1,14 +1,78 @@
 @mixin clearfix {
     &::after {
-        content: '';
+        content: "";
         display: table;
         clear: both;
     }
 }
 
-@mixin absCenter {
+@mixin incenter {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+
+
+//media query
+
+/*
+
+0-600px phone
+
+600px-900px tablet protrait
+
+
+900px-1200px tablet landscape
+1200px-1800px is where our normal style apply
+1800px + : big desktop
+
+*/
+
+//這邊也是一種mixin 引用media query的方法
+// @mixin respond-phone{
+//     @media (max-width:600px){
+//         @content; 
+//     }
+// }
+//order :Base +typography > general layout +grid > page layout > components
+
+/*$breakpoint arguement choice
+- phone
+
+- tab-port
+
+- tab-land
+
+- big-desktop
+
+1 em=16 px
+*/
+@mixin respond($breakpoint) {
+    @if ($breakpoint==phone) {
+        @media (max-width: 37.5em) {   //600px iphone
+            @content
+        };
+    }
+
+    @if ($breakpoint== tab-port) {
+        @media (max-width: 56.25em) { //900px ipad
+            @content
+        };
+    }
+
+    @if ($breakpoint==tab-land) {
+        @media (max-width: 75em) { //1200px laptop
+            @content
+        };
+    }
+
+    @if ($breakpoint==big-desktop) {
+        @media (min-width: 112.5em) {  //1800px big-desktop
+            @content
+        };
+        
+    }
+
 }
