@@ -12,18 +12,9 @@
         top: 6rem;
         border-radius: 50%;
         z-index: 2000;
-        box-shadow: 0 1rem 3rem rgba($color: $color-black, $alpha: .1);
+        box-shadow: 0 1rem 3rem rgba($color: $color-black, $alpha: 0.1);
         text-align: center;
         cursor: pointer;
-
-        @include respond(tab-port){
-            top: 4rem;
-            right: 4rem;
-        }
-        @include respond(phone){
-            top: 3rem;
-            right: 3rem;
-        }
     }
 
     &__background {
@@ -39,17 +30,8 @@
 
         //transform: scale(80);
         //這邊放大是為了讓背景圖片(漸層)放大至遮住全螢幕
-        transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+        transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
         //後者為動畫曲線
-
-        @include respond(tab-port){
-            top: 4.5rem;
-            right: 4.5rem;
-        }
-        @include respond(phone){
-            top: 3.5rem;
-            right: 3.5rem;
-        }
     }
 
     &__nav {
@@ -61,11 +43,11 @@
         z-index: 1500;
         opacity: 0;
         width: 0;
-        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
     &__list {
-        @include incenter;
+        @include absCenter;
         //引用_mixin.scss裡面所設定 incenter
         list-style: none;
         text-align: center;
@@ -77,7 +59,6 @@
     }
 
     &__link {
-
         &:link,
         &:visited {
             display: inline-block;
@@ -89,7 +70,7 @@
             font-weight: 300;
             background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%, $color-white 100%);
             background-size: 220%; //使得顏色的部分蓋過整個li
-            transition: background-position .4s;
+            transition: background-position 0.4s;
 
             span {
                 margin-right: 1.5rem;
@@ -107,18 +88,17 @@
     }
 
     //FUNCTIONAL
-    &__checkbox:checked~&__background {
+    &__checkbox:checked ~ &__background {
         transform: scale(80);
     }
 
-    &__checkbox:checked~&__nav {
+    &__checkbox:checked ~ &__nav {
         opacity: 1;
         width: 100%; //這邊之後改成100%
     }
 
     //icon
     &__icon {
-
         margin-top: 3.5rem;
         position: relative;
 
@@ -131,22 +111,22 @@
             display: inline-block;
         }
 
-        // 
+        //
         &::before,
         //要先定義 before after的content
         &::after {
-            content: "";
+            content: '';
             position: absolute;
             left: 0%;
-            transition: all .2s;
+            transition: all 0.2s;
         }
 
         &::after {
-            top: .8rem;
+            top: 0.8rem;
         }
 
         &::before {
-            top: -.8rem;
+            top: -0.8rem;
         }
     }
 
@@ -158,16 +138,16 @@
         top: -1rem;
     }
 
-    &__checkbox:checked+&__button &__icon {
+    &__checkbox:checked + &__button &__icon {
         background-color: transparent;
     }
 
-    &__checkbox:checked+&__button &__icon::before {
+    &__checkbox:checked + &__button &__icon::before {
         top: 0;
         transform: rotate(135deg);
     }
 
-    &__checkbox:checked+&__button &__icon::after {
+    &__checkbox:checked + &__button &__icon::after {
         top: 0;
         transform: rotate(-135deg);
     }

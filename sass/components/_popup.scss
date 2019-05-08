@@ -1,36 +1,36 @@
 .popup {
-    width: 100%;
     height: 100vh;
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba($color-black, $alpha: 0.8);
-    z-index: 99999;
+    background-color: rgba($color-black, .8);
+    z-index: 9999;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s;
+    transition: all .3s;
 
     &__content {
-        @include incenter;
+        @include absCenter;
+
         width: 75%;
         background-color: $color-white;
-        box-shadow: 0 2rem 4rem rgba($color-black, $alpha: 0.2);
+        box-shadow: 0 2rem 4rem rgba($color-black, .2);
         border-radius: 3px;
-        display: table; //這邊設為table，與下方left right相互應
-        overflow: hidden; //把圖片邊緣給去掉
-        transform: translate(-50%, -50%) scale(0.25);
-        // opacity: 0;
-        transition: all 0.5s 0.2s; //.4s為持續時間 .2s為延遲時間
-        //讓黑底先跑出來
+        display: table;
+        overflow: hidden;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.25);
+        transition: all .5s .2s;
     }
 
     &__left {
-        width: 33.3333333%;
-        display: table-cell; // 設定為table-cell 代表 與下方table-cell 一樣的高度
+        width: 33.333333%;
+        display: table-cell;
     }
 
     &__right {
-        width: 66.6666666%;
+        width: 66.6666667%;
         display: table-cell;
         vertical-align: middle;
         padding: 3rem 5rem;
@@ -44,22 +44,25 @@
     &__text {
         font-size: 1.4rem;
         margin-bottom: 4rem;
-        column-count: 2; //把字體分成2欄  =  = ->分為2欄
-        column-gap: 4rem; //中間 2欄區塊字體 的寬度 =   =  ->中間為4rem
-        column-rule: 1px solid $color-grey-light-2; //兩段文字的中間線條 -> ｜
-        hyphens: auto; // 連字符 -> ' - '  需要先在html 定義語言 -> lang="en"
+        column-count: 2;
+        column-gap: 4rem; //1em = 14px;
+        column-rule: 1px solid $color-grey-light-2;
+        hyphens: auto;
     }
 
+    //Open states
     &:target {
-        //當class="popup"的id 被啟動時 可以觸發
         opacity: 1;
         visibility: visible;
     }
+
     &:target &__content {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(.8);
     }
+
     &__close {
+
         &:link,
         &:visited {
             color: $color-grey-dark;
@@ -69,9 +72,10 @@
             font-size: 3rem;
             text-decoration: none;
             display: inline-block;
-            transition: all 0.2s;
+            transition: all .2s;
             line-height: 1;
         }
+
         &:hover {
             color: $color-primary;
         }
